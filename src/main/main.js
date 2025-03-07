@@ -1,5 +1,9 @@
 const { app, BrowserWindow, ipcMain, globalShortcut } = require('electron/main')
 
+function screenPath(name) {
+  return `../renderer/screens/${name}/index.html`
+}
+
 let mainWindow
 let timerWindow
 
@@ -16,7 +20,7 @@ function createMainWindow() {
     }
   })
 
-  mainWindow.loadFile('index.html')
+  mainWindow.loadFile(screenPath('menu'))
 
   mainWindow.on('closed', () => {
     mainWindow = null
@@ -39,7 +43,7 @@ function createTimerWindow() {
     }
   })
 
-  timerWindow.loadFile('timer.html')
+  timerWindow.loadFile(screenPath('timer'))
 
   timerWindow.on('closed', () => {
     timerWindow = null
