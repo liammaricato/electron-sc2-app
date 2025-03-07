@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron/main')
+const { app, BrowserWindow, ipcMain, globalShortcut } = require('electron/main')
 
 let mainWindow
 let timerWindow
@@ -45,7 +45,7 @@ function createTimerWindow() {
     timerWindow = null
 
     if (mainWindow) {
-      mainWindow.webContents.send('timer-window-closed')
+      mainWindow.send('timer-window-closed')
     }
   })
 }
@@ -57,6 +57,16 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) {
       createMainWindow()
     }
+  })
+
+  globalShortcut.register('CmdOrCtrl+Shift+K', () => {
+    if (timerWindow) {
+      timerWindow.focus()
+    } else {
+      createTimerWindow()
+    }
+
+    timerWindow.send('start-timer')
   })
 })
 

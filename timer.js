@@ -1,3 +1,5 @@
+const { ipcRenderer } = require('electron')
+
 const nowSound = new Audio('now.mp3')
 
 const timerBtn = document.getElementById('start-timer')
@@ -71,3 +73,11 @@ function updateTimerDisplay() {
   const progress = (timeLeft / startingTime) * 100
   timerBar.style.width = `${progress}%`
 }
+
+ipcRenderer.on('start-timer', () => {
+  if (timerDisplay.value === '00:00') {
+    setTimerOption(30)
+  }
+  
+  timerBtn.click()
+})
