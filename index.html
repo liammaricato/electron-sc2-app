@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SC2 Toolbox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(26, 24, 23);
+            color: rgb(87, 179, 255);
+        }
+
+        h1 {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        img {
+            height: 100%;
+        }
+
+        .menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            height: 40px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: 2px solid rgb(87, 179, 255);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-btn:hover {
+            background-color: rgb(6, 50, 87);
+        }
+
+        .menu-btn.active {
+            background-color: rgb(87, 179, 255);
+            color: rgb(26, 24, 23);
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>SC2 Toolbox</h1>
+    <div class="menu-container">
+        <div class="menu-btn" id="open-timer">
+            <img src="assets/queen.webp" alt="Zerg Queen">
+            <span>Timer</span>
+        </div>
+        <div class="menu-btn" id="open-build-order">
+            <img src="assets/queen.webp" alt="Zerg Queen">
+            <span>Builds (wip)</span>
+        </div>
+    </div>
+
+    <footer>by Suricatoo</footer>
+
+    <script src="renderer.js"></script>
+</body>
+</html>

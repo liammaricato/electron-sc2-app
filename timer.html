@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(26, 24, 23);
+            color: tomato;
+        }
+
+        h3 {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .zerg-macro-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .zerg-macro-container img {
+            max-width: 30%;
+            max-height: 200px;
+        }
+
+        .timer-options {
+            padding: 10px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 2px solid rgb(185, 59, 0);
+            border-radius: 10px;
+        }
+
+        .timer-option {
+            text-align: center;
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid rgb(185, 59, 0);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .timer-option:hover {
+            background-color: rgb(116, 37, 0);
+        }
+
+        .timer-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+            gap: 20px;
+        }
+
+        .repeat-container {
+            display: flex;
+            align-items: center;
+            background-color: rgb(117, 37, 0);
+            padding: 5px 15px 5px 10px;
+            border-radius: 10px;
+        }
+
+        #timer-display {
+            color: tomato;
+            background-color: rgb(26, 24, 23);
+            font-size: 4em;
+            border: none;
+            cursor: text;
+        }
+        
+        #timer-display::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        .timer-bar-container {
+            width: 90%;
+            padding: 1px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #timer-bar {
+            width: 100%;
+            height: 2px;
+            background-color: rgb(185, 59, 0);
+            border-radius: 10px;
+            transition: width 1s;
+        }
+
+        #start-timer {
+            padding: 8px 25px;
+            border: 2px solid rgb(185, 59, 0);
+            font-size: 1.5em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <h3>Zerg Macro Cycle</h3>
+    <div class="zerg-macro-container">
+        <img src="assets/queen.webp" alt="Zerg Queen">
+        <div class="timer-options">
+            <div class="timer-option" id="timer-30">30s</div>
+            <div class="timer-option" id="timer-31">31s</div>
+            <div class="timer-option" id="timer-32">32s</div>
+        </div>
+    </div>
+
+    <div class="timer-container">
+        <div class="repeat-container">
+            <input type="checkbox" id="repeat" name="repeat"><label for="repeat">Repeat</label>
+        </div>
+        <input type="time" id="timer-display" value="00:00">
+        <div class="timer-bar-container">
+            <div id="timer-bar"></div>
+        </div>
+        <div id="start-timer">Start</div>
+    </div>
+
+    <script src="timer.js"></script>
+</body>
+</html>
