@@ -6,6 +6,7 @@ function screenPath(name) {
 
 let mainWindow
 let timerWindow
+let buildsWindow
 
 function createMainWindow() {
   mainWindow = new BrowserWindow({
@@ -54,6 +55,28 @@ function createTimerWindow() {
   })
 }
 
+function createBuildsWindow() {
+  buildsWindow = new BrowserWindow({
+    width: 620,
+    height: 650,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    }
+  })
+
+  buildsWindow.loadFile(screenPath('builds'))
+
+  buildsWindow.on('closed', () => {
+    buildsWindow = null
+
+    if (mainWindow) {
+      mainWindow.send('builds-window-closed')
+    }
+  })
+}
+
 app.whenReady().then(() => {
   createMainWindow()
 
@@ -88,4 +111,12 @@ ipcMain.on('open-timer-window', () => {
 // Comunicação entre processos para fechar a janela do timer
 ipcMain.on('close-timer-window', () => {
   if (timerWindow) timerWindow.close()
+})
+
+ipcMain.on('open-builds-window', () => {
+  if (!buildsWindow) createBuildsWindow()
+})
+
+ipcMain.on('close-builds-window', () => {
+  if (buildsWindow) buildsWindow.close()
 })
