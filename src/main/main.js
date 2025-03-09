@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain, globalShortcut } = require('electron/main')
 
 function screenPath(name) {
-  return `../renderer/screens/${name}/index.html`
+  return `./src/renderer/screens/${name}/index.html`
 }
 
 let mainWindow
