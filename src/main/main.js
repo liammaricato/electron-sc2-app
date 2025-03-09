@@ -6,6 +6,7 @@ function screenPath(name) {
 
 let mainWindow
 let timerWindow
+let buildsWindow
 
 function createMainWindow() {
   mainWindow = new BrowserWindow({
@@ -65,7 +66,7 @@ function createBuildsWindow() {
     }
   })
 
-  buildsWindow.loadFile('builds.html')
+  buildsWindow.loadFile(screenPath('builds'))
 
   buildsWindow.on('closed', () => {
     buildsWindow = null
