@@ -1,6 +1,6 @@
 const { ipcRenderer } = require('electron')
 
-const nowSound = new Audio('now.mp3')
+const nowSound = new Audio('../../assets/now.mp3')
 
 const timerBtn = document.getElementById('start-timer')
 const timerDisplay = document.getElementById('timer-display')
