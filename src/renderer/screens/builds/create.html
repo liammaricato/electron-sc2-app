@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Manager</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 1px 5%;
+            background-color: rgb(26, 24, 23);
+            color: rgb(178, 111, 255);
+        }
+
+        h1 {
+            text-align: center;
+            padding: 10px;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+        }
+
+        #create-build-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        #build-title {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-bottom: 2px solid rgb(178, 111, 255);
+            text-align: center;
+            background-color: rgb(26, 24, 23);
+            font-size: 1.3em;
+        }
+
+        #build-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .build-step {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            padding: 5px;
+            border: none;
+            border-bottom: 2px solid rgb(178, 111, 255);
+            background-color: rgb(26, 24, 23);
+            color: rgb(178, 111, 255);
+        }
+
+        input:active, input:focus {
+            outline: none !important;
+            background-color: rgb(37, 35, 34) !important;
+        }
+
+        input::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        #add-step {
+            width: 100%;
+            border: none;
+            border-radius: 50%;
+            background-color: rgb(37, 35, 34);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Create new build</h1>
+    <form action="#" id="create-build-form">
+        <input type="text" name="build-title" id="build-title" placeholder="Build title">
+        <div id="build-steps">
+            <div class="build-step">
+                <input type="time" name="time" placeholder="Time">
+                <input type="text" name="supply" placeholder="supply">
+                <input type="text" name="description" placeholder="description">
+            </div>
+            <button id="add-step">+</button>
+        </div>
+        <button type="submit" id="create-build-btn">Add step</button>
+    </form>
+    <script src="create.js"></script>
+</body>
+</html>
