@@ -80,6 +80,23 @@
             font-size: 1.5em;
             cursor: pointer;
         }
+
+        #save-build {
+            text-align: center;
+            padding: 10px;
+            font-weight: 700;
+            color: rgb(37, 35, 34);
+            background-color: rgb(178, 111, 255);
+            width: 100%;
+            border: 2px solid rgb(178, 111, 255);
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #save-build:hover {
+            background-color: rgb(145, 77, 223);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -94,7 +111,7 @@
             </div>
             <button id="add-step">+</button>
         </div>
-        <button type="submit" id="create-build-btn">Add step</button>
+        <a type="submit" id="save-build">Save build</a>
     </form>
     <script src="create.js"></script>
 </body>
