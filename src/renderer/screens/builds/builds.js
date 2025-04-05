@@ -1,17 +1,12 @@
-// builds = [
-//     {
-//         name: 'Build 1'
-//     },
-//     {
-//         name: 'Build 2'
-//     },
-//     {
-//         name: 'Build 3'
-//     }
-// ]
+const buildsList = document.getElementById('builds-list')
 
-// localStorage.setItem('builds', JSON.stringify(builds));
+builds = JSON.parse(localStorage.getItem('builds')) || []
 
-parsedBuilds = JSON.parse(localStorage.getItem('builds'));
+if (builds.length == 0) {
+    const emptyBuildsAlert = document.createElement('p')
+    emptyBuildsAlert.textContent = 'There are no builds yet! You should try creating one'
+    
+    buildsList.append(emptyBuildsAlert)
+}
 
-console.log(parsedBuilds);
+// CREATE BUILD ELEMENTS FROM BUILDS

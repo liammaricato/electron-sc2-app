@@ -12,12 +12,33 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 1px 5%;
+            padding: 1px 5% 30px 5%;
             background-color: rgb(26, 24, 23);
             color: rgb(178, 111, 255);
             display: flex;
             flex-direction: column;
             height: 100vh;
+        }
+
+        #back {
+            position: fixed;
+            top: 4%;
+            height: 3em;
+            width: 3em;
+            padding: 1em;
+            background-color: rgb(37, 35, 34);
+            border-radius: 5em;
+            display: flex;
+            align-items: center;
+        }
+
+        #back:hover { 
+            background-color: rgb(48, 45, 44);
+        }
+
+        #back>svg {
+            margin-left: 0.15em;
+            height: 100%;
         }
 
         h1 {
@@ -103,13 +124,18 @@
             border: 1px solid rgb(178, 111, 255);
         }
 
+        #add-step:active {
+            color: rgb(37, 35, 34);
+            background-color: rgb(178, 111, 255);
+        }
+
         #save-build {
-            /* FAZER COM QUE ESSE CARA VÁ PARA O FINAL DO FLEX DO PAI */
+            margin-top: auto;
             text-align: center;
             padding: 10px;
             font-weight: 700;
             color: rgb(37, 35, 34);
-            background-color: rgb(178, 111, 255);
+            background-color: #b26fff;
             width: 100%;
             border: 2px solid rgb(178, 111, 255);
             border-radius: 20px;
@@ -123,6 +149,9 @@
     </style>
 </head>
 <body>
+    <a id="back" href="index.html">
+        <svg enable-background="new 0 0 15 26" version="1.1" viewBox="0 0 15 26" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><polygon points="12.885 0.58 14.969 2.664 4.133 13.5 14.969 24.336 12.885 26.42 2.049 15.584 -0.035 13.5" fill="#b26fff"/></svg>
+    </a>
     <h1>Create new build</h1>
     <form action="#" id="create-build-form">
         <input type="text" name="build-title" id="build-title" placeholder="Build title">
@@ -132,9 +161,9 @@
                 <input type="text" name="supply" placeholder="supply">
                 <input type="text" name="description" placeholder="description">
             </div>
-            <a id="add-step">+</a>
         </div>
-        <a type="submit" id="save-build">Save build</a>
+        <a id="add-step">+</a>
+        <a id="save-build">Save build</a>
     </form>
     <script src="create.js"></script>
 </body>
