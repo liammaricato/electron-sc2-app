@@ -5,7 +5,7 @@ const currentBuildId = sessionStorage.getItem('openBuildId') || 0
 
 const build = builds.find(build => build.id == currentBuildId)
 
-document.getElementById('build-title').textContent = build.title
+document.getElementById('build-title').textContent = build.title || 'Untitled build'
 
 for (step of build.steps) {
     createBuildStep(step)

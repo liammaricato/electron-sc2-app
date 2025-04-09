@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Manager</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 1px 5% 30px 5%;
+            background-color: rgb(26, 24, 23);
+            color: rgb(178, 111, 255);
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #back {
+            position: fixed;
+            top: 4%;
+            height: 3em;
+            width: 3em;
+            padding: 1em;
+            background-color: rgb(37, 35, 34);
+            border-radius: 5em;
+            display: flex;
+            align-items: center;
+        }
+
+        #back:hover { 
+            background-color: rgb(48, 45, 44);
+        }
+
+        #back>svg {
+            margin-left: 0.15em;
+            height: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 10px;
+            flex: 0 1 auto;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+        }
+
+        #create-build-form {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 10px;
+            flex: 1 1 auto;
+        }
+
+        #build-title {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-bottom: 2px solid rgb(178, 111, 255);
+            text-align: center;
+            background-color: rgb(26, 24, 23);
+            font-size: 1.3em;
+        }
+
+        #build-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .build-step {
+            display: flex;
+            gap: 10px;
+        }
+
+        input {
+            padding: 5px;
+            border: none;
+            border-bottom: 1px solid rgb(178, 111, 255);
+            background-color: rgb(26, 24, 23);
+            color: rgb(178, 111, 255);
+        }
+
+        input:active, input:focus {
+            outline: none !important;
+            background-color: rgb(37, 35, 34) !important;
+        }
+
+        input[name="time"], input[name="supply"] {
+            flex: 1;
+            width: 0;
+            text-align: center;
+        }
+
+        input[name="description"] {
+            flex: 7;
+        }
+
+        input::-webkit-calendar-picker-indicator {
+            display: none;
+        }
+
+        #add-step {
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: rgb(37, 35, 34);
+            font-size: 1.5em;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid rgb(37, 35, 34);
+            transition: border 0.3s;
+        }
+
+        #add-step:hover {
+            border: 1px solid rgb(178, 111, 255);
+        }
+
+        #add-step:active {
+            color: rgb(37, 35, 34);
+            background-color: rgb(178, 111, 255);
+        }
+
+        #save-build {
+            margin-top: auto;
+            text-align: center;
+            padding: 10px;
+            font-weight: 700;
+            color: rgb(37, 35, 34);
+            background-color: #b26fff;
+            width: 100%;
+            border: 2px solid rgb(178, 111, 255);
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #save-build:hover {
+            background-color: rgb(145, 77, 223);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <a id="back" href="build.html">
+        <svg enable-background="new 0 0 15 26" version="1.1" viewBox="0 0 15 26" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><polygon points="12.885 0.58 14.969 2.664 4.133 13.5 14.969 24.336 12.885 26.42 2.049 15.584 -0.035 13.5" fill="#b26fff"/></svg>
+    </a>
+    <h1>Edit build</h1>
+    <form action="#" id="create-build-form">
+        <input type="text" name="build-title" id="build-title" placeholder="Build title">
+        <div id="build-steps">
+            <!-- Build steps -->
+        </div>
+        <a id="add-step">+</a>
+        <a id="save-build">Save build</a>
+    </form>
+    <script src="edit.js"></script>
+</body>
+</html>
