@@ -1,9 +1,14 @@
+const backBtn = document.getElementById('back')
 const buildStepsContainer = document.getElementById('build-steps')
 
 const builds = JSON.parse(localStorage.getItem('builds')) || []
 const currentBuildId = sessionStorage.getItem('openBuildId') || 0
 
 const build = builds.find(build => build.id == currentBuildId)
+
+if (!build) {
+    backBtn.click()
+}
 
 document.getElementById('build-title').textContent = build.title || 'Untitled build'
 
