@@ -98,6 +98,24 @@
         input::-webkit-calendar-picker-indicator {
             display: none;
         }
+
+        #play-build {
+            margin-top: auto;
+            text-align: center;
+            padding: 10px;
+            font-weight: 700;
+            color: rgb(37, 35, 34);
+            background-color: #b26fff;
+            width: 100%;
+            border: 2px solid rgb(178, 111, 255);
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        #play-build:hover {
+            background-color: rgb(145, 77, 223);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -110,6 +128,7 @@
     <h1 id="build-title">Build title</h1>
     <div id="build-steps">
     </div>
+    <a id="play-build" href="./player/player.html">Play</a>
     <script src="build.js"></script>
 </body>
 </html>

@@ -17,31 +17,51 @@
             color: #b26fff;
             display: flex;
             flex-direction: column;
-            gap: 2em;
+            align-items: center;
+            gap: 1.5em;
             height: 100vh;
         }
 
         #player-container {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4em;
+        }
+
+        #player-buttons {
+            display: flex;
             justify-content: center;
             align-items: center;
-            gap: 1.5em;
+            gap: 1em;
         }
 
         .player-btn {
-            height: 3em;
-            width: 3em;
+            height: 2.5em;
+            width: 2.5em;
             padding: 0.7em;
             background-color: rgb(37, 35, 34);
             border-radius: 5em;
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
 
         #player-play-pause {
-            height: 4.5em;
-            width: 4.5em;
-            padding-left: 1em;
+            height: 3.5em;
+            width: 3.5em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #play-icon {
+            margin-left: 0.25em;
+        }
+
+        #restart-icon {
+            fill: none;
         }
 
         .player-btn:hover { 
@@ -50,6 +70,7 @@
 
         .player-btn > svg {
             fill: #b26fff;
+            stroke: #b26fff;
             height: 100%;
         }
 
@@ -63,9 +84,17 @@
             text-decoration: none;
         }
 
+        #timer-display {
+            background-color: rgb(26, 24, 23);
+            font-size: 4em;
+            border: none;
+            cursor: text;
+        }
+
         #build-steps {
             display: flex;
             flex-direction: column;
+            width: 100%;
             gap: 10px;
             border: 2px solid #b26fff;
             border-radius: 1em;
@@ -75,6 +104,11 @@
         .build-step {
             display: flex;
             gap: 10px;
+        }
+
+        .build-step.highlight {
+            margin: 10px 0;
+            font-size: 1.5em;
         }
 
         input {
@@ -106,15 +140,20 @@
     </style>
 </head>
 <body>
-    <h2 id="build-title">Harstem's gasless opening into Roach/Ravager</h1>
+    <h2 id="build-title"></h2>
     <div id="player-container">
-        <div id="player-back" class="player-btn">
-        </div>
-        <div id="player-play-pause" class="player-btn">
-            <svg height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z"/></svg>
-        </div>
-        <div id="player-stop" class="player-btn">
-            <svg height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title/><path d="M392,432H120a40,40,0,0,1-40-40V120a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V392A40,40,0,0,1,392,432Z"/></svg>
+        <input type="time" id="timer-display" value="00:00">
+        <div id="player-buttons">
+            <div id="player-restart" class="player-btn">
+                <svg id="restart-icon" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.99988C16.9706 2.99988 21 7.02931 21 11.9999C21 16.9704 16.9706 20.9999 12 20.9999C7.02944 20.9999 3 16.9704 3 11.9999C3 9.17261 4.30367 6.64983 6.34267 4.99988" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M3 4.49988H7V8.49988" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+            </div>
+            <div id="player-play-pause" class="player-btn">
+                <svg id="play-icon" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M405.2,232.9L126.8,67.2c-3.4-2-6.9-3.2-10.9-3.2c-10.9,0-19.8,9-19.8,20H96v344h0.1c0,11,8.9,20,19.8,20  c4.1,0,7.5-1.4,11.2-3.4l278.1-165.5c6.6-5.5,10.8-13.8,10.8-23.1C416,246.7,411.8,238.5,405.2,232.9z"/></svg>
+                <svg id="pause-icon" class="hidden" height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M224,435.8V76.1c0-6.7-5.4-12.1-12.2-12.1h-71.6c-6.8,0-12.2,5.4-12.2,12.1v359.7c0,6.7,5.4,12.2,12.2,12.2h71.6   C218.6,448,224,442.6,224,435.8z"/><path d="M371.8,64h-71.6c-6.7,0-12.2,5.4-12.2,12.1v359.7c0,6.7,5.4,12.2,12.2,12.2h71.6c6.7,0,12.2-5.4,12.2-12.2V76.1   C384,69.4,378.6,64,371.8,64z"/></g></svg>
+            </div>
+            <div id="player-stop" class="player-btn">
+                <svg height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><title/><path d="M392,432H120a40,40,0,0,1-40-40V120a40,40,0,0,1,40-40H392a40,40,0,0,1,40,40V392A40,40,0,0,1,392,432Z"/></svg>
+            </div>
         </div>
     </div>
     <div id="build-steps">
