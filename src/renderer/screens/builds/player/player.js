@@ -26,3 +26,67 @@ function createBuildStep(step) {
 
     buildStepsContainer.appendChild(stepEl)
 }
+
+// =============== PLAYER ===============
+
+const timerDisplay = document.getElementById('timer-display')
+const playPauseBtn = document.getElementById('player-play-pause')
+const playIcon = document.getElementById('play-icon')
+const pauseIcon = document.getElementById('pause-icon')
+const restartBtn = document.getElementById('player-restart')
+const stopBtn = document.getElementById('player-stop')
+
+let timerInterval
+let currentTime = 0
+let timerRunning = false
+
+playPauseBtn.addEventListener('click', () => {
+    togglePlayPauseIcon()
+
+    if (!timerRunning) {
+        timerRunning = true
+        
+        clearInterval(timerInterval)
+        timerInterval = setInterval(() => {
+            currentTime++
+            updateTimerDisplay()
+        }, 1000)
+    } else {
+        clearInterval(timerInterval)
+        timerRunning = false
+    }
+})
+
+stopBtn.addEventListener('click', () => {
+    if (timerRunning) {
+        togglePlayPauseIcon()
+        clearInterval(timerInterval)
+        timerRunning = false
+    }
+
+    currentTime = 0
+    updateTimerDisplay()
+})
+
+restartBtn.addEventListener('click', () => {
+    currentTime = 0
+    updateTimerDisplay()
+})
+
+function togglePlayPauseIcon() {
+    playIcon.classList.toggle('hidden')
+    pauseIcon.classList.toggle('hidden')
+}
+
+function updateTimerDisplay() {
+    const minutes = Math.floor(currentTime / 60)
+    const seconds = currentTime % 60
+    timerDisplay.value = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+}
+
+const buildSteps = document.querySelectorAll('.build-step')
+buildSteps[0].classList.add('highlight')
+
+function highlightStep() {
+
+}

@@ -68,6 +68,10 @@
             background-color: rgb(48, 45, 44);
         }
 
+        .player-btn:active {
+            border: solid 1px #b26fff;
+        }
+
         .player-btn > svg {
             fill: #b26fff;
             stroke: #b26fff;
@@ -114,14 +118,10 @@
         input {
             padding: 5px;
             border: none;
+            font-size: inherit;
             border-bottom: 1px solid rgb(178, 111, 255);
             background-color: rgb(26, 24, 23);
             color: rgb(178, 111, 255);
-        }
-
-        input:active, input:focus {
-            outline: none !important;
-            background-color: rgb(37, 35, 34) !important;
         }
 
         input[name="time"], input[name="supply"] {
