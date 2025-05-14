@@ -108,20 +108,31 @@
         .build-step {
             display: flex;
             gap: 10px;
+            border-radius: 7px;
+            transition: all 0.5s;
         }
 
         .build-step.highlight {
             margin: 10px 0;
             font-size: 1.5em;
+            background-color: #b26fff;
+            box-shadow: 0px 0px 10px 3px #b26fff;
+        }
+
+        .highlight input {
+            color: black;
+            background-color: transparent;
+            border-radius: 5px;
         }
 
         input {
             padding: 5px;
             border: none;
             font-size: inherit;
-            border-bottom: 1px solid rgb(178, 111, 255);
+            border-bottom: 1px solid #b26fff;
             background-color: rgb(26, 24, 23);
-            color: rgb(178, 111, 255);
+            color: #b26fff;
+            transition: all 0.5s;
         }
 
         input[name="time"], input[name="supply"] {

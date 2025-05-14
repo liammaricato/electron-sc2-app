@@ -40,16 +40,21 @@ let timerInterval
 let currentTime = 0
 let timerRunning = false
 
+const buildStepsEls = document.querySelectorAll('.build-step')
+let currentStepIndex = 0
+
 playPauseBtn.addEventListener('click', () => {
     togglePlayPauseIcon()
 
     if (!timerRunning) {
         timerRunning = true
+        buildStepsEls[currentStepIndex].classList.add('highlight')
         
         clearInterval(timerInterval)
         timerInterval = setInterval(() => {
             currentTime++
             updateTimerDisplay()
+            checkHighlightedStep()
         }, 1000)
     } else {
         clearInterval(timerInterval)
@@ -64,12 +69,14 @@ stopBtn.addEventListener('click', () => {
         timerRunning = false
     }
 
+    buildStepsEls[currentStepIndex].classList.remove('highlight')
     currentTime = 0
     updateTimerDisplay()
 })
 
 restartBtn.addEventListener('click', () => {
     currentTime = 0
+    currentStepIndex = 0
     updateTimerDisplay()
 })
 
@@ -84,9 +91,14 @@ function updateTimerDisplay() {
     timerDisplay.value = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
 }
 
-const buildSteps = document.querySelectorAll('.build-step')
-buildSteps[0].classList.add('highlight')
+function checkHighlightedStep() {
+    nextStep = build.steps[currentStepIndex + 1]
 
-function highlightStep() {
+    if (!nextStep) return
 
+    if (nextStep.time == timerDisplay.value) {
+        buildStepsEls[currentStepIndex].classList.remove('highlight')
+        currentStepIndex++
+        buildStepsEls[currentStepIndex].classList.add('highlight')
+    }
 }
