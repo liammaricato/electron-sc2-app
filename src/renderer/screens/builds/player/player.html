@@ -22,6 +22,31 @@
             height: 100vh;
         }
 
+        #back, #edit {
+            position: fixed;
+            top: 4%;
+            height: 3em;
+            width: 3em;
+            padding: 1em;
+            background-color: rgb(37, 35, 34);
+            border-radius: 5em;
+            display: flex;
+            align-items: center;
+        }
+
+        #back {
+            left: 5%;
+        }
+
+        #back:hover { 
+            background-color: rgb(48, 45, 44);
+        }
+
+        #back>svg {
+            margin-left: 0.15em;
+            height: 100%;
+        }
+
         #player-container {
             display: flex;
             flex-direction: column;
@@ -151,6 +176,9 @@
     </style>
 </head>
 <body>
+    <a id="back" href="../build.html">
+        <svg enable-background="new 0 0 15 26" version="1.1" viewBox="0 0 15 26" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><polygon points="12.885 0.58 14.969 2.664 4.133 13.5 14.969 24.336 12.885 26.42 2.049 15.584 -0.035 13.5" fill="#b26fff"/></svg>
+    </a>
     <h2 id="build-title"></h2>
     <div id="player-container">
         <input type="time" id="timer-display" value="00:00">

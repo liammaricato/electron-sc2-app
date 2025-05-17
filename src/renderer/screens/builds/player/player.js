@@ -48,7 +48,7 @@ playPauseBtn.addEventListener('click', () => {
 
     if (!timerRunning) {
         timerRunning = true
-        buildStepsEls[currentStepIndex].classList.add('highlight')
+        checkHighlightedStep()
         
         clearInterval(timerInterval)
         timerInterval = setInterval(() => {
@@ -69,15 +69,12 @@ stopBtn.addEventListener('click', () => {
         timerRunning = false
     }
 
-    buildStepsEls[currentStepIndex].classList.remove('highlight')
-    currentTime = 0
-    updateTimerDisplay()
+    restartPlayer()
 })
 
 restartBtn.addEventListener('click', () => {
-    currentTime = 0
-    currentStepIndex = 0
-    updateTimerDisplay()
+    restartPlayer()
+    checkHighlightedStep()
 })
 
 function togglePlayPauseIcon() {
@@ -92,6 +89,8 @@ function updateTimerDisplay() {
 }
 
 function checkHighlightedStep() {
+    buildStepsEls[currentStepIndex].classList.add('highlight')
+
     nextStep = build.steps[currentStepIndex + 1]
 
     if (!nextStep) return
@@ -101,4 +100,11 @@ function checkHighlightedStep() {
         currentStepIndex++
         buildStepsEls[currentStepIndex].classList.add('highlight')
     }
+}
+
+function restartPlayer() {
+    buildStepsEls[currentStepIndex].classList.remove('highlight')
+    currentTime = 0
+    currentStepIndex = 0
+    updateTimerDisplay()
 }
